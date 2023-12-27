@@ -9,7 +9,6 @@ use pocketmine\player\Player;
 
 class RemoveMoneyCommand extends Command
 {
-
 	private $plugin;
 
 	public function __construct(Economy $plugin)
@@ -19,7 +18,7 @@ class RemoveMoneyCommand extends Command
 		$this->plugin = $plugin;
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args) : bool
+	public function execute(CommandSender $sender, string $commandLabel, array $args): bool
 	{
 		if (count($args) !== 2) {
 			$sender->sendMessage("Usage: /removemoney <player> <amount>");
@@ -40,16 +39,9 @@ class RemoveMoneyCommand extends Command
 			return true;
 		}
 
-		$currentMoney = $this->plugin->getProvider()->getMoney($targetPlayer);
-		if ($currentMoney < $amountToRemove) {
-			$sender->sendMessage("The player does not have enough money");
-			return true;
-		}
-
-		$this->plugin->getProvider()->addMoney($targetPlayer, -$amountToRemove);
+		$this->plugin->getProvider()->removeMoney($targetPlayer, $amountToRemove);
 
 		$sender->sendMessage("Successfully removed " . $amountToRemove . " money from " . $targetPlayerName);
 		return true;
 	}
-
 }
