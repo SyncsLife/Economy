@@ -2,6 +2,7 @@
 
 namespace Economy\SyncsLife\commands;
 
+use Economy\SyncsLife\Economy;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -10,7 +11,7 @@ class CheckMoneyCommand extends Command
 {
 	private $plugin;
 
-	public function __construct($plugin)
+	public function __construct(Economy $plugin)
 	{
 		parent::__construct("checkmoney", "Check the money of other players", null, ["viewmoney"]);
 		$this->setPermission("economy.command.true");
