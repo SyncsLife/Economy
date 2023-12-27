@@ -1,0 +1,11 @@
+name: Economy
+api: 5.0.0
+version: 1.0.0
+author: SyncsLife
+main: Economy\SyncsLife\Economy
+
+permissions:
+  economy.command.true:
+    default: true
+  economy.command.op:
+    default: op
