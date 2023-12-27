@@ -12,7 +12,7 @@ The Economy plugin allows you to implement an economy system on your PocketMine-
 
 ## Configuration
 
-Before starting the server, make sure to configure the database settings in the `config.yml` file located in the `plugins/Economy` folder.
+Before starting your economy make sure you put your correct database in the plugin data
 
 ## Usage
 
