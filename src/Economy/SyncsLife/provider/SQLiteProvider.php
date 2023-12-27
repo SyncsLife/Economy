@@ -55,6 +55,17 @@ class SQLiteProvider implements Provider
 		$stmt->execute();
 	}
 
+	public function removeMoney(Player $player, float $amount): void {
+		$currentMoney = $this->getMoney($player);
+		$amountToRemove = min($currentMoney, $amount);
+		$newMoney = $currentMoney - $amountToRemove;
+
+		$stmt = $this->db->prepare("UPDATE money SET amount = ? WHERE player = ?");
+		$stmt->bindValue(1, $newMoney, SQLITE3_FLOAT);
+		$stmt->bindValue(2, $player->getName(), SQLITE3_TEXT);
+		$stmt->execute();
+	}
+
 	public function clearMoney(Player $player): void {
 		$stmt = $this->db->prepare("DELETE FROM money WHERE player = :player");
 		$stmt->bindValue(":player", $player->getName());

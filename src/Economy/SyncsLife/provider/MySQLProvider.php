@@ -90,6 +90,19 @@ class MySQLProvider implements Provider
 		$stmt->close();
 	}
 
+	public function removeMoney(Player $player, float $amount): void {
+		$currentMoney = $this->getMoney($player);
+		$amountToRemove = min($currentMoney, $amount);
+		$newMoney = $currentMoney - $amountToRemove;
+
+		$stmt = $this->db->prepare("UPDATE money SET amount = ? WHERE player = ?");
+		$name = $player->getName();
+		$stmt->bind_param("ds", $newMoney, $name);
+		$stmt->execute();
+		$stmt->close();
+	}
+
+
 	public function clearMoney(Player $player): void {
 		$stmt = $this->db->prepare("DELETE FROM money WHERE player = ?");
 		$name = $player->getName();

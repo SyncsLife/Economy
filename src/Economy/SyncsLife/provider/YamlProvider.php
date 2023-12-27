@@ -37,6 +37,15 @@ class YamlProvider implements Provider{
 		$this->config->save();
 	}
 
+	public function removeMoney(Player $player, float $amount): void {
+		$currentMoney = $this->getMoney($player);
+		$amountToRemove = min($currentMoney, $amount);
+		$newMoney = $currentMoney - $amountToRemove;
+
+		$this->config->set($player->getName(), $newMoney);
+		$this->config->save();
+	}
+
 	public function clearMoney(Player $player): void {
 		$this->config->remove($player->getName());
 		$this->config->save();
