@@ -48,29 +48,25 @@ mysql-database: "name-db"
 ```
 
 ```yaml
-# commands
+# commands and permissions
 
 commands:
   - name: "/checkmoney"
     permission: "economy.command.true"
 
   - name: "/removemoney"
-    description: "Remove money from a player"
     usage: "/removemoney <player> <amount>"
     permission: "economy.command.true"
 
   - name: "/addmoney"
-    description: "Add money to a player"
     usage: "/addmoney <player> <amount>"
     permission: "economy.command.op"
 
   - name: "/pay"
-    description: "Pay another player"
     usage: "/pay <player> <amount>"
     permission: "economy.command.true"
 
   - name: "/createmoney"
-    description: "Create money for a player"
     usage: "/createmoney <player> <amount>"
     permission: "conomy.command.op"
 ```
