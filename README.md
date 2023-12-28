@@ -47,29 +47,5 @@ mysql-password: "password"
 mysql-database: "name-db"
 ```
 
-```yaml
-# commands and permissions
-
-commands:
-  - name: "/checkmoney"
-    permission: "economy.command.true"
-
-  - name: "/removemoney"
-    usage: "/removemoney <player> <amount>"
-    permission: "economy.command.true"
-
-  - name: "/addmoney"
-    usage: "/addmoney <player> <amount>"
-    permission: "economy.command.op"
-
-  - name: "/pay"
-    usage: "/pay <player> <amount>"
-    permission: "economy.command.true"
-
-  - name: "/createmoney"
-    usage: "/createmoney <player> <amount>"
-    permission: "conomy.command.op"
-```
-
 
 
